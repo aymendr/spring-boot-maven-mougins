@@ -39,7 +39,7 @@ pipeline {
         		[[
         			artifactId: 'demo',
         			classifier: '',
-        			file: 'target/*.jar',
+        			file: 'target/demo-1.0-SNAPSHOT.jar',
         			type: 'jar'
         		]],
         		credentialsId: 'nexus_pwd',
@@ -48,7 +48,7 @@ pipeline {
         		nexusVersion: 'nexus3',
         		protocol: 'http',
         		repository: 'new-repo',
-        		version: '1.0-SNAPSHOT'
+        		version: '${env.BUILD_ID}-${env.BUILD_TIMESTAMP}'
         	}
         }
 
