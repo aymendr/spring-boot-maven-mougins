@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Build Maven and archive') {
+        stage('Check java version') {
             steps {
                 sh "java -version"
                 sh "env | grep -e PATH -e JAVA_HOME"
