@@ -14,7 +14,7 @@ pipeline {
                 sh "env | grep -e PATH -e JAVA_HOME"
                 sh "mvn -version"
                }
-        }/*
+        }
         stage('Checkout Code') {
             steps {
                 // Get some code from a GitHub repository
@@ -56,7 +56,7 @@ pipeline {
         		repository: 'new-repo',
         		version: '1.0-SNAPSHOT'
         	}
-        }*/
+        }
 
 
 
