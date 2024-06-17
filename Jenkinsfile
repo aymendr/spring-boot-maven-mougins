@@ -21,13 +21,13 @@ pipeline {
                 archive "target/*.jar"
                }
         }
-        stage('Deploy on nexus machine') {
+        /*stage('Deploy on nexus machine') {
             agent { label 'nexus'}
             steps {
                 sh "touch file"
                }
-        }
-        /*
+        }*/
+        
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
@@ -40,6 +40,25 @@ pipeline {
                 }
             }
         }
+
+        stage("Nexus"){
+           steps {
+            nexusArtifactUploader artifacts: 
+            [[artifactId: 'demo', 
+            classifier: '', 
+            file: 'target/demo-1.0-SNAPSHOT.jar', 
+            type: 'jar'
+            ]], 
+            credentialsId: 'nexus_pwd', 
+            groupId: 'com.example', 
+            nexusUrl: '192.168.56.102:8081', 
+            nexusVersion: 'nexus3', 
+            protocol: 'http', 
+            repository: 'release-mougins', 
+            version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}"
+           } 
+        }
+/*
         stage("Nexus") {
         	steps {
         		nexusArtifactUploader artifacts:
@@ -57,8 +76,8 @@ pipeline {
         		repository: 'new-repo',
         		version: '${env.BUILD_ID}-${env.BUILD_TIMESTAMP}'
         	}
-        }*/
-
+        }
+*/
 
 
 
