@@ -22,8 +22,8 @@ pipeline {
                 archive "target/*.jar"
                }
         }*/
-        stage('Deploy on nexus machine') {
-            agent { label 'nexus'}
+        stage('Create file on sonar machine') {
+            agent { label 'sonar'}
             steps {
                 sh '''cd && touch file'''
 
