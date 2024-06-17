@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /*
+        
         stage('Check java version') {
             steps {
                 sh "java -version"
@@ -29,7 +29,7 @@ pipeline {
 
                }
         }
-        /*
+        
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
