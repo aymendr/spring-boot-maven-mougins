@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+        /*
         stage('Check java version') {
             steps {
                 sh "java -version"
@@ -20,14 +21,15 @@ pipeline {
                 sh "mvn -DskipTests clean package"
                 archive "target/*.jar"
                }
-        }
-        /*stage('Deploy on nexus machine') {
+        }*/
+        stage('Deploy on nexus machine') {
             agent { label 'nexus'}
             steps {
-                sh "touch file"
+                sh '''cd && touch file'''
+
                }
-        }*/
-        
+        }
+        /*
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
