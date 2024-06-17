@@ -21,6 +21,13 @@ pipeline {
                 archive "target/*.jar"
                }
         }
+        stage('Deploy on nexus machine') {
+            agent { label 'nexus'}
+            steps {
+                sh "touch file"
+               }
+        }
+        /*
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
@@ -50,7 +57,7 @@ pipeline {
         		repository: 'new-repo',
         		version: '${env.BUILD_ID}-${env.BUILD_TIMESTAMP}'
         	}
-        }
+        }*/
 
 
 
